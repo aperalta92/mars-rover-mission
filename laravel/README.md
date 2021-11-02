@@ -22,11 +22,10 @@
     <li>docker exec -it mars-rover-mission /bin/bash</li>
     <li>cd laravel</li>
     <li>cp .env.example .env</li>
-    <li>composer install --dev</li>
+    <li>composer install</li>
     <li>php artisan migrate</li>
     <li>chown -R 1000:www-data .</li>
-    <li>find {project-root}/laravel -type f -exec chmod 644 {} \</li>
-    <li>find {project-root}/laravel -type d -exec chmod 755 {} \</li>
+    <li>chmod 775 -R .</li>
 </ul>
 
 <p>Now you should be able to use the application in http://www.mars-rover-mission.com<br/>
