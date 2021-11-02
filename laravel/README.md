@@ -22,7 +22,7 @@
     <li>docker exec -it mars-rover-mission /bin/bash</li>
     <li>cd laravel</li>
     <li>cp .env.example .env</li>
-    <li>composer install</li>
+    <li>composer install --dev</li>
     <li>php artisan migrate</li>
     <li>chown -R 1000:www-data .</li>
     <li>find {project-root}/laravel -type f -exec chmod 644 {} \</li>
