@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Api\V1\RoverController;
+use App\Http\Api\V1\MapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group( ["prefix" => "v1"], function () {
+    Route::group(["prefix" => "map"], function () {
+        Route::post("/", [MapController::class, "createMap"])->name("api-create-map");
+        Route::get("/{id}", [MapController::class, "getMap"])->name('api-get-map');
+    });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::group( ["prefix" => "rover"], function () {
+        Route::post("/", [RoverController::class, "createRover"])->name("api-create-rover");
+        Route::post("/{roverId}/move", [RoverController::class, "moveRover"])->name("api-move-rover");
+    });
 });

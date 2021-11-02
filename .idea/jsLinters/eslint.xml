@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EslintConfiguration">
+    <custom-configuration-file used="true" path="/usr/local/lib/node_modules/standard/eslintrc.json" />
+    <extra-options value="--env jquery --rule 'eqeqeq: [warn, smart]' --rule 'comma-dangle: [error, always-multiline]'" />
+  </component>
+</project>

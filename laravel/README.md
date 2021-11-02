@@ -1,65 +1,36 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1>Alex Peralta - Mars Rover Mission</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<h2> About the project</h2>
 
-## About Laravel
+<p>I created a docker-based structure with two containers, one with an apache2 webserver and the project code and another one with the mysql service. </p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h2>How to initialize the project</h2>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<p>I created a vhost so you will have to modify your hosts file (Windows: C:\Windows\System32\drivers\etc\hosts || Unix: /etc/hosts) with the next line:</p>
+<strong>127.0.0.1 www.mars-rover-mission</strong>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h3>Docker initialization</h3>
+        
+<p>For the inizialization of this project you will need docker and docker compose</p>
+<p>Note that docker will try to bind the 80 port to the host 80 port (we are not using ssl in this case) for apache2 and the port 3306 for mysql service, if it's already in use you will have to change the binding in {project-root}/docker/dev/docker-compose.yml, in the mars-rover-mission container before executing the first command.<br/><br />
+<strong>WARNING: Javascript repositories will fail in this case if we don't change the API base URL adding the new port and creating the JS bundle again and database connection may fail too if we don't change laravel .env file.</strong></p>
 
-## Learning Laravel
+<strong>Commands</strong>
+<ul>
+    <li>cd {project-root}/docker/dev</li>
+    <li>docker-compose up -d --build</li>
+    <li>docker exec -it mars-rover-mission /bin/bash</li>
+    <li>cd laravel</li>
+    <li>cp .env.example .env</li>
+    <li>composer install</li>
+    <li>php artisan migrate</li>
+    <li>chown -R 1000:www-data .</li>
+    <li>find {project-root}/laravel -type f -exec chmod 644 {} \</li>
+    <li>find {project-root}/laravel -type d -exec chmod 755 {} \</li>
+</ul>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p>Now you should be able to use the application in http://www.mars-rover-mission.com<br/>
+You can run the available php tests with the command "php artisan test"</p>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<strong>For any doubt or question don't hetistate to send me an email to aperaltaq92@gmail.com</strong>
