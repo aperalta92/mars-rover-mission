@@ -1,0 +1,29 @@
+version: '2'
+services:
+  # The Application
+  mars-rover-mission:
+    build: ./app
+    restart: unless-stopped
+    container_name: mars-rover-mission
+    working_dir: /var/www/html/www.mars-rover-mission.com/
+    volumes:
+      - ../../:/var/www/html/www.mars-rover-mission.com
+      - ./web/apache/www.mars-rover-mission.com.conf:/etc/apache2/sites-enabled/www.mars-rover-mission.com.conf
+    ports:
+      - 80:80
+      - 443:443
+
+  mars-mysql:
+    image: mysql:5.7
+    container_name: mars-mysql-5.7
+    restart: unless-stopped
+    volumes:
+      - mars-mysql:/var/lib/mysql-5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=XgkJB%]9dHd2@FFL"
+      - "MYSQL_ROOT_HOST=%"
+    ports:
+      - "3306:3306"
+
+volumes:
+  mars-mysql:
