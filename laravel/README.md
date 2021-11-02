@@ -7,7 +7,7 @@
 <h2>How to initialize the project</h2>
 
 <p>I created a vhost so you will have to modify your hosts file (Windows: C:\Windows\System32\drivers\etc\hosts || Unix: /etc/hosts) with the next line:</p>
-<strong>127.0.0.1 www.mars-rover-mission</strong>
+<strong>127.0.0.1 www.mars-rover-mission.com</strong>
 
 <h3>Docker initialization</h3>
         
